@@ -7,8 +7,8 @@
   "scripts": {
     "install_electron": "cross-env-shell ELECTRON_MIRROR=\"https://npm.taobao.org/mirrors/electron/\"  npm install electron --save-dev",
     "start": "concurrently \"cross-env BROWSER=none craco start\" \"wait-on http://localhost:3000 && electron .\"",
-    "package": "npm run build && cross-env-shell ELECTRON_MIRROR=\"https://npm.taobao.org/mirrors/electron/\"  electron-builder",
-    "build": "craco build",
+    "package": "npm run build && cross-env-shell ELECTRON_MIRROR=\"https://npm.taobao.org/mirrors/electron/\" electron-builder",
+    "build": "cross-env GENERATE_SOURCEMAP=false craco build",
     "test": "craco test",
     "eject": "craco eject"
   },
