@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "public/electron.js",
-  "homepage": ".",
+  "homepage": "./",
   "scripts": {
     "install_electron": "cross-env-shell ELECTRON_MIRROR=\"https://npm.taobao.org/mirrors/electron/\"  npm install electron --save-dev",
     "start": "concurrently \"cross-env BROWSER=none craco start\" \"wait-on http://localhost:3000 && electron .\"",

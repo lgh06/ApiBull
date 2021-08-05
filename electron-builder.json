@@ -3,7 +3,8 @@
   "productName": "Electron-CRA-Test",
   "files": [
     "build/**/*",
-    "./*"
+    "./*",
+    "node_modules/**/*"
   ],
   "electronDownload":{
     "mirror": "https://npm.taobao.org/mirrors/electron/"

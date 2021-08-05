@@ -10,9 +10,11 @@ import {
 
 // pages or components
 import HomePage from './pages/HomePage'
+import ThirdPartyLogin from './pages/ThirdPartyLogin'
+import TopicsPage from './pages/TopicsPage'
 
 // dynamically loaded pages or components
-import {AsyncPage, ErrorBoundary} from './helpers'
+import { ErrorBoundary } from './helpers'
 
 
 export default function App() {
@@ -36,10 +38,10 @@ export default function App() {
               <HomePage />
             </Route>
             <Route path="/3login">
-              <AsyncPage page="ThirdPartyLogin" />
+              <ThirdPartyLogin />
             </Route>
             <Route path="/topics">
-              <AsyncPage page="TopicsPage" />
+              <TopicsPage />
             </Route>
             <Route path="*">
               <>404 error, not found</>
