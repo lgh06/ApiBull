@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link,
@@ -19,7 +19,7 @@ import { ErrorBoundary } from './helpers'
 
 export default function App() {
   return (
-    <Router basename="/web-prompter">
+    <Router>
       <div>
         <ul className="nav">
           <li>
