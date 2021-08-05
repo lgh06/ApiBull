@@ -2,17 +2,57 @@
   "name": "electron_cra",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "public/electron.js",
+  "homepage": ".",
   "scripts": {
     "install_electron": "cross-env-shell ELECTRON_MIRROR=\"https://npm.taobao.org/mirrors/electron/\"  npm install electron --save-dev",
-    "dev": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"cross-env BROWSER=none craco start\" \"wait-on http://localhost:3000 && electron .\"",
+    "package": "npm run build && cross-env-shell ELECTRON_MIRROR=\"https://npm.taobao.org/mirrors/electron/\"  electron-builder",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@craco/craco": "^6.1.1",
+    "@loadable/component": "^5.14.1",
+    "@reduxjs/toolkit": "^1.5.1",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "node-sass": "^5.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.3",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.1"
+  },
   "devDependencies": {
+    "concurrently": "^6.2.0",
     "cross-env": "^7.0.3",
-    "electron": "^13.1.8"
+    "electron": "^13.1.8",
+    "electron-builder": "^22.11.7",
+    "wait-on": "^6.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
