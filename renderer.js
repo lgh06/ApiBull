@@ -1,0 +1,1 @@
+fetch("https://www.baidu.com/").then(res => console.log(res.text()));
