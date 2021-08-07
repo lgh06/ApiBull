@@ -9,6 +9,7 @@ import {
 // https://loadable-components.com/docs/getting-started/
 
 // pages or components
+import RequestPage from './pages/RequestPage'
 import HomePage from './pages/HomePage'
 import ThirdPartyLogin from './pages/ThirdPartyLogin'
 import TopicsPage from './pages/TopicsPage'
@@ -23,7 +24,10 @@ export default function App() {
       <div>
         <ul className="nav">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">RequestPage</Link>
+          </li>
+          <li>
+            <Link to="/home">Home</Link>
           </li>
           <li>
             <Link to="/3login">Login</Link>
@@ -35,6 +39,9 @@ export default function App() {
         <ErrorBoundary>
           <Switch>
             <Route exact path="/">
+              <RequestPage />
+            </Route>
+            <Route path="/home">
               <HomePage />
             </Route>
             <Route path="/3login">

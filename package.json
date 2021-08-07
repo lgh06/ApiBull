@@ -18,9 +18,6 @@
   "license": "ISC",
   "dependencies": {
     "@craco/craco": "^6.1.1",
-    "@formily/antd": "^2.0.0-beta.87",
-    "@formily/core": "^2.0.0-beta.87",
-    "@formily/react": "^2.0.0-beta.87",
     "@loadable/component": "^5.14.1",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.10",
