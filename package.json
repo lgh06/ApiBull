@@ -6,6 +6,7 @@
   "homepage": "./",
   "scripts": {
     "install_electron": "cross-env-shell ELECTRON_MIRROR=\"https://npm.taobao.org/mirrors/electron/\"  npm install electron --save-dev",
+    "dev": "craco start",
     "start": "concurrently \"cross-env BROWSER=none craco start\" \"wait-on http://localhost:3000 && electron .\"",
     "package": "npm run build && cross-env-shell ELECTRON_MIRROR=\"https://npm.taobao.org/mirrors/electron/\" electron-builder",
     "build": "cross-env GENERATE_SOURCEMAP=false craco build",
@@ -17,11 +18,17 @@
   "license": "ISC",
   "dependencies": {
     "@craco/craco": "^6.1.1",
+    "@formily/antd": "^2.0.0-beta.87",
+    "@formily/core": "^2.0.0-beta.87",
+    "@formily/react": "^2.0.0-beta.87",
     "@loadable/component": "^5.14.1",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+    "antd": "^4.16.10",
+    "cross-fetch": "^3.1.4",
+    "moment": "^2.29.1",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -41,7 +48,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "react-hooks/exhaustive-deps": "off"
+    }
   },
   "browserslist": {
     "production": [

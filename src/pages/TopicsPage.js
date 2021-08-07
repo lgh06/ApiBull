@@ -12,7 +12,7 @@ import {
 // https://console.cloud.tencent.com/tcb/env/login
 // https://docs.cloudbase.net/api-reference/webv2/initialization.html
 // import cloudbase from "@cloudbase/js-sdk";
-import { http } from "../helpers";
+// import { http } from "../helpers";
 
 // node引入包名
 // 浏览器、微信小程序，支付宝小程序引入./dist编译的js文件

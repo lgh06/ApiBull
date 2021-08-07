@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './Viewer.module.scss';
-import { genClassName, genClassString, ImageHolder, innerHTML as setInnerHTML } from '../helpers';
+import { genClassName, genClassString, innerHTML as setInnerHTML } from '../helpers';
 
 import { useSelector, useDispatch } from 'react-redux'
 import * as player from '../reducers/playerSlice'
@@ -34,7 +34,7 @@ export default function Viewer() {
     window.addEventListener('orientationchange',(e) => {
       dispatch(player.setState({key: 'clientHeight', value: document.body.clientHeight}));
     })
-  },[]);
+  });
   useEffect(() => {
     console.log('inside movedHeight')
     document.querySelector('pre.text').style.transform = `translateY(-${movedHeight}px)`

@@ -12,6 +12,12 @@ npm install --global windows-build-tools
 set ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"  
 
 npm i --sass-binary-site=https://npm.taobao.org/mirrors/node-sass --registry=https://registry.npm.taobao.org    
-
-https://electron-react-boilerplate.js.org/docs/installation-debugging-solutions/  
+> https://electron-react-boilerplate.js.org/docs/installation-debugging-solutions/  
 https://www.electronjs.org/docs/tutorial/installation#proxies  
+
+## 第三方依赖  
+Ant Design React (create-react-app)  https://ant.design/docs/react/use-with-create-react-app-cn  
+Formily v2 https://v2.formilyjs.org/zh-CN/guide/quick-start  
+Formily React & Antd https://antd.formilyjs.org/zh-CN/components  
+> antd moment  
+> @formily/core @formily/react @formily/antd  

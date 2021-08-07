@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import {dispatch} from 'react-redux'
+// import { dispatch } from 'react-redux'
 
 
 const setPlayAndAnimation = createAsyncThunk(
@@ -123,6 +123,6 @@ export const playerSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { setSpeed, setInnerHTML, setPlay, setViewerCSS, setState, animation, setMirror } = playerSlice.actions
-export {setPlayAndAnimation}
+export { setPlayAndAnimation }
 
 export default playerSlice.reducer

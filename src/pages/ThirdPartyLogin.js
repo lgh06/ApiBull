@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  Switch,
-  Route,
   useRouteMatch,
   useLocation,
 } from "react-router-dom";
