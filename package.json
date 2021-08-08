@@ -1,5 +1,5 @@
 {
-  "name": "electron_cra",
+  "name": "ApiBull小牛API测试器",
   "version": "1.0.0",
   "description": "",
   "main": "public/electron.js",
