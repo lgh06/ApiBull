@@ -44,6 +44,20 @@ export default function RequestPage () {
           />
         </Col>
       </Row>
+      <Row>
+        <Col>
+        req headers (JSON object)
+          <Input.TextArea
+            rows="8"
+          />
+        </Col>
+        <Col>
+        req body (JSON object)
+          <Input.TextArea
+              rows="8"
+            />
+        </Col>
+      </Row>
       <div>test</div>
     </>
   )

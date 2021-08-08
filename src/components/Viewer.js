@@ -23,7 +23,7 @@ export default function Viewer() {
   }
   const dispatch = useDispatch()
 
-  useEffect(() => {
+   (() => {
     document.addEventListener('keydown',(e) => {
       if( (e.keyCode === 1 || e.keyCode === 87 ) && playing === 1){
         dispatch(player.setPlay('exit'))      
