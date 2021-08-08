@@ -3,11 +3,26 @@ import React from "react";
 import { Select } from 'antd';
 import { Input } from 'antd';
 
+import { useQuery } from "react-query";
+import { fetch }  from "../helpers";
+
+
 // TODO , more methods
 const methodArray = ['GET', 'POST', 'PUT', 'DELETE'];
 
 
 export default function RequestPage () {
+
+  const { data, status } = useQuery("episodes", () =>
+    fetch("https://rickandmortyapi.com/api/episode")
+  );
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+  if (status === "error") {
+    return <p>Error :(</p>;
+  }
   const { Option } = Select;
   
   function handleChange(field, e) {
@@ -25,7 +40,7 @@ export default function RequestPage () {
         })}
       </Select>
       <Input placeholder="请输入URL" onChange={(e) => handleChange('input', e)} />
-      <div>test</div>
+      <div>{JSON.stringify(data)}</div>
     </>
   )
 }

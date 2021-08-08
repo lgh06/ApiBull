@@ -21,10 +21,16 @@ function genFetch(method) {
   }
 }
 
+const asyncFetch = async function(...args) {
+  const res = await fetch(...args);
+  return await res.json();
+}
+
 const http = {
   post: genFetch('post'),
   POST: genFetch('post'),
   get: genFetch('get'),
   GET: genFetch('get'),
+  fetch: asyncFetch,
 }
-export { http };
+export { http, asyncFetch as fetch };
