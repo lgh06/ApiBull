@@ -1,7 +1,8 @@
 import React from "react";
 
-import { Select } from 'antd';
-import { Input } from 'antd';
+import { Select, Input } from 'antd';
+import { Row, Col } from 'antd';
+
 
 import { useQuery } from "react-query";
 import { fetch }  from "../helpers";
@@ -30,16 +31,29 @@ export default function RequestPage () {
       console.log(`选择了 ${field} ${e}`);
     }else if (field === 'input'){
       console.log(`选择了 ${field} ${e.target.value}`)
+    }else{
+      console.log(`选择了 ${field} ${e}`);
     }
   }
   return (
     <>
-      <Select defaultValue="GET" style={{ width: 120 }} onSelect={(e) => handleChange('select', e)}>
-        {methodArray.map((v) => {
-          return <Option key={v} value={v}>{v}</Option>
-        })}
-      </Select>
-      <Input placeholder="请输入URL" onChange={(e) => handleChange('input', e)} />
+      <Row align="middle" justify="center">
+        <Col flex="100px">
+          <Select defaultValue="GET" style={{ width: 120 }} onSelect={(e) => handleChange('select', e)}>
+            {methodArray.map((v) => {
+              return <Option key={v} value={v}>{v}</Option>
+            })}
+          </Select>
+        </Col>
+        <Col flex="auto">
+          <Input.Search
+            placeholder="请输入URL"
+            allowClear
+            enterButton="请求"
+            onSearch={(e) => handleChange('search', e)}
+          />
+        </Col>
+      </Row>
       <div>{JSON.stringify(data)}</div>
     </>
   )
