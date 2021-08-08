@@ -10,7 +10,7 @@ import * as current from '../reducers/currentSlice'
 
 
 // TODO , more methods
-const methodArray = ['GET', 'POST', 'PUT', 'DELETE'];
+const methodArray = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
 
 
 export default function RequestPage () {
@@ -42,7 +42,7 @@ export default function RequestPage () {
     <>
       <Row align="middle" justify="center">
         <Col flex="100px">
-          <Select defaultValue="GET" style={{ width: 120 }} onSelect={(e) => handleChange('reqConfig.method', e)}>
+          <Select defaultValue={reqConfig.method} style={{ width: 120 }} onSelect={(e) => handleChange('reqConfig.method', e)}>
             {methodArray.map((v) => {
               return <Option key={v} value={v}>{v}</Option>
             })}
@@ -53,6 +53,7 @@ export default function RequestPage () {
             placeholder="请输入URL"
             allowClear
             enterButton="请求"
+            value={reqUrl}
             onChange={(e) => handleChange('reqUrl', e)}
             onSearch={handleSubmit}
           />
@@ -63,6 +64,7 @@ export default function RequestPage () {
         req headers (JSON object)
           <Input.TextArea
             rows="8"
+            value={reqConfig.headers}
             onChange={(e) => handleChange('reqConfig.headers', e)}
           />
         </Col>
@@ -70,6 +72,7 @@ export default function RequestPage () {
         req body (JSON object)
           <Input.TextArea
               rows="8"
+              value={reqConfig.body}
               onChange={(e) => handleChange('reqConfig.body', e)}
             />
         </Col>

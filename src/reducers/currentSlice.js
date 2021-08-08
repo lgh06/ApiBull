@@ -4,10 +4,24 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 const fetchByConfig = createAsyncThunk(
   'current/fetchByConfig',
   async (payload, { dispatch }) => {
-    const { reqUrl, reqConfig } = payload;
-    const response = await fetch(reqUrl,reqConfig).then(res => res.json());
-    console.log(response)
-    return response
+    let { reqUrl, reqConfig } = payload;
+    let reqConfigCopy = {...reqConfig};
+    console.log(payload)
+    try {
+      if (typeof reqConfig.headers === 'string' && reqConfig.headers!=='') {
+        reqConfigCopy.headers = JSON.parse(reqConfig.headers)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    try {
+      const response = await fetch(reqUrl,reqConfigCopy).then(res => res.text());
+      console.log(response)
+      return response
+    } catch (error) {
+      console.error(error)
+      // return Promise.resolve(0);
+    }
   }
 )
 
@@ -16,12 +30,12 @@ const fetchByConfig = createAsyncThunk(
 export const currentSlice = createSlice({
   name: 'current',
   initialState: {
-    reqUrl: '',
+    reqUrl: 'https://jsonplaceholder.typicode.com/posts?userId=1',
     reqConfig: {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: `{
+  "Content-Type": "application/json"
+}`,
       body: null,
     },
     resHeader: '',
