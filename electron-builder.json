@@ -8,5 +8,10 @@
   ],
   "electronDownload":{
     "mirror": "https://npm.taobao.org/mirrors/electron/"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "runAfterFinish": false
   }
 }

@@ -33,8 +33,8 @@ const url = require('url')
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 800,
     webPreferences: {
       preload: isElectronDev ? './public/preload.js' :  path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -45,6 +45,8 @@ function createWindow () {
   mainWindow.loadURL(
     isElectronDev ? CRA_DEV_URL : `file://${path.join(__dirname, '../build/index.html')}`
   );
+  mainWindow.menuBarVisible = false;
+  mainWindow.autoHideMenuBar = true;
   // and load the index.html of the app.
   // mainWindow.loadFile('index.html')
   // mainWindow.loadURL('http://localhost:3000/')

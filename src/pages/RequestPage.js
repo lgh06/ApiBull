@@ -15,7 +15,7 @@ const methodArray = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
 
 export default function RequestPage () {
   const dispatch = useDispatch()
-  const { reqUrl, reqConfig } = useSelector((state) => state.current)
+  const { reqUrl, reqConfig, resBody } = useSelector((state) => state.current)
 
 
 
@@ -77,7 +77,7 @@ export default function RequestPage () {
             />
         </Col>
       </Row>
-      <div>test</div>
+      <div>{resBody}</div>
     </>
   )
 }

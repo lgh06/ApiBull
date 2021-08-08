@@ -11,12 +11,17 @@ const fetchByConfig = createAsyncThunk(
       if (typeof reqConfig.headers === 'string' && reqConfig.headers!=='') {
         reqConfigCopy.headers = JSON.parse(reqConfig.headers)
       }
+      // GET 或 HEAD 请求不能有body 设置为null
+      if (reqConfigCopy.method === 'GET' || reqConfigCopy.method === 'HEAD') {
+        reqConfigCopy.body = null
+      }
     } catch (error) {
       console.log(error)
     }
     try {
       const response = await fetch(reqUrl,reqConfigCopy).then(res => res.text());
       console.log(response)
+      dispatch(setResBody(response))
       return response
     } catch (error) {
       console.error(error)
@@ -69,6 +74,13 @@ export const currentSlice = createSlice({
       }
       console.log(state.reqConfig)
     },
+    setResBody: (state, action) => {
+      if(typeof action.payload === 'string') {
+        state.resBody = action.payload;
+      }else{
+
+      }
+    },
   },
   extraReducers:{
     [fetchByConfig.fulfilled]: (state, action) => {}
@@ -76,7 +88,7 @@ export const currentSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setState, setReqUrl, setReqConfig } = currentSlice.actions
+export const { setState, setReqUrl, setReqConfig, setResBody } = currentSlice.actions
 export { fetchByConfig }
 
 export default currentSlice.reducer
