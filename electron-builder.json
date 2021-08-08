@@ -1,6 +1,6 @@
 {
-  "appId": "com.edgefront.electron-cra-test",
-  "productName": "Electron-CRA-Test",
+  "appId": "com.edgefront.apibull",
+  "productName": "ApiBull 小牛API测试器",
   "files": [
     "build/**/*",
     "./*",
