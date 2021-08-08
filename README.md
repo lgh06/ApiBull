@@ -17,7 +17,4 @@ https://www.electronjs.org/docs/tutorial/installation#proxies
 
 ## 第三方依赖  
 Ant Design React (create-react-app)  https://ant.design/docs/react/use-with-create-react-app-cn  
-Formily v2 https://v2.formilyjs.org/zh-CN/guide/quick-start  
-Formily React & Antd https://antd.formilyjs.org/zh-CN/components  
 > antd moment  
-> @formily/core @formily/react @formily/antd  

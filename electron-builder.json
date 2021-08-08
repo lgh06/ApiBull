@@ -1,6 +1,9 @@
 {
   "appId": "com.edgefront.apibull",
   "productName": "ApiBull 小牛API测试器",
+  "directories":{
+    "buildResources": "build"
+  },
   "files": [
     "build/**/*",
     "./*",
