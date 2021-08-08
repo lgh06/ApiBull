@@ -15,6 +15,7 @@ const methodArray = ['GET', 'POST', 'PUT', 'DELETE'];
 
 export default function RequestPage () {
   const dispatch = useDispatch()
+  const { reqUrl, reqConfig } = useSelector((state) => state.current)
 
 
 
@@ -30,12 +31,12 @@ export default function RequestPage () {
     if (field === 'reqUrl'){
       dispatch(current.setReqUrl(value))
     }else if (String(field).startsWith('reqConfig')){
-      const configField = String(field).split('.')[1];
-      dispatch(current.setReqConfig({[configField]: value}))
+      dispatch(current.setReqConfig({[field]: value}))
     }
   }
   function handleSubmit() {
     console.log('clicked 请求')
+    dispatch(current.fetchByConfig({reqUrl, reqConfig}))
   }
   return (
     <>

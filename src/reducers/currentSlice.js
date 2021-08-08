@@ -3,12 +3,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 const fetchByConfig = createAsyncThunk(
   'current/fetchByConfig',
-  async (payload, { dispatch, getState }) => {
-    const {reqUrl, reqMethod, reqHeader, reqBody } = payload;
-    const response = await fetch(reqUrl,{
-
-    })
-    return response.data
+  async (payload, { dispatch }) => {
+    const { reqUrl, reqConfig } = payload;
+    const response = await fetch(reqUrl,reqConfig).then(res => res.json());
+    console.log(response)
+    return response
   }
 )
 
@@ -19,7 +18,7 @@ export const currentSlice = createSlice({
   initialState: {
     reqUrl: '',
     reqConfig: {
-      method: '',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -41,10 +40,15 @@ export const currentSlice = createSlice({
       }
     },
     setReqConfig: (state, action) => {
+
       if(typeof action.payload === 'object') {
         Object.keys(action.payload).forEach(v => {
+          const configField = String(v).split('.')[1];
           // debugger
-          state.reqConfig[v] = action.payload[v];
+          if (configField === 'headers' &&  !String(action.payload[v]).startsWith('{') ) {
+            return
+          }
+          state.reqConfig[configField] = action.payload[v];
         });
       }else{
         
@@ -52,9 +56,13 @@ export const currentSlice = createSlice({
       console.log(state.reqConfig)
     },
   },
+  extraReducers:{
+    [fetchByConfig.fulfilled]: (state, action) => {}
+  }
 })
 
 // Action creators are generated for each case reducer function
 export const { setState, setReqUrl, setReqConfig } = currentSlice.actions
+export { fetchByConfig }
 
 export default currentSlice.reducer
