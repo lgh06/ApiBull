@@ -5,7 +5,9 @@ const fetchByConfig = createAsyncThunk(
   'current/fetchByConfig',
   async (payload, { dispatch, getState }) => {
     const {reqUrl, reqMethod, reqHeader, reqBody } = payload;
-    const response = await fetch(reqUrl)
+    const response = await fetch(reqUrl,{
+
+    })
     return response.data
   }
 )
@@ -15,14 +17,14 @@ const fetchByConfig = createAsyncThunk(
 export const currentSlice = createSlice({
   name: 'current',
   initialState: {
-    speed: 10,
-    innerHTML: 'You can paste or input texts here. <br/>你可以把文字粘贴在这里。或用输入法输入。',
-    scrollHeight: 600, // whole pre height
-    clientHeight: 1080, // one screen height,
-    movedHeight: 0,
-    playing:0,
-    paused: 0,
-    requestObject: {},
+    reqUrl: '',
+    reqConfig: {
+      method: '',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: null,
+    },
     resHeader: '',
     resBody: '',
   },
@@ -31,14 +33,28 @@ export const currentSlice = createSlice({
       const {key, value} = action.payload;
       state[key] = value;
     },
-    setReq: (state, action) => {
-      const {reqUrl, reqMethod, reqHeader, reqBody} = action.payload;
-      state.requestObject = {reqUrl, reqMethod, reqHeader, reqBody};
+    setReqUrl: (state, action) => {
+      if(typeof action.payload === 'string') {
+        state.reqUrl = action.payload;
+      }else{
+
+      }
+    },
+    setReqConfig: (state, action) => {
+      if(typeof action.payload === 'object') {
+        Object.keys(action.payload).forEach(v => {
+          // debugger
+          state.reqConfig[v] = action.payload[v];
+        });
+      }else{
+        
+      }
+      console.log(state.reqConfig)
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setState } = currentSlice.actions
+export const { setState, setReqUrl, setReqConfig } = currentSlice.actions
 
 export default currentSlice.reducer
