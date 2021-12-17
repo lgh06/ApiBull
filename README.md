@@ -5,7 +5,9 @@
 开发时electron的入口文件为public/electron.js,内容为locaohost:3000/  
 打包后electron的入口文件为build/electron.js,内容为file://build/*  
 
-需要Python，且在环境变量Path中有python. （打安装包用）
+需要Python，且在环境变量Path中有python. （打安装包用）  
+需要Windows Build Tools。 [link](https://my.visualstudio.com/Downloads?q=build%20tools)  
+需要全局代理。electron build会从github下载东西。  
   
 npx nrm use taobao  
 
