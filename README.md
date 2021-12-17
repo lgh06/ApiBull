@@ -3,7 +3,9 @@
 然后 cd /d "项目路径"，再执行以下操作，否则electron-builder会报错。  
   
 开发时electron的入口文件为public/electron.js,内容为locaohost:3000/  
-打包后electron的入口文件为build/electron.js,内容为file://build/*
+打包后electron的入口文件为build/electron.js,内容为file://build/*  
+
+需要Python，且在环境变量Path中有python. （打安装包用）
   
 npx nrm use taobao  
 
